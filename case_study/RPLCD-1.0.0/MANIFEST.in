@@ -1,0 +1,4 @@
+include README.rst LICENSE CHANGELOG.md CONTRIBUTORS
+include lcdtest.py
+include lcdtests/*.py
+recursive-exclude * *.pyc

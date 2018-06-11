@@ -1,0 +1,8 @@
+============================= test session starts ==============================
+platform linux -- Python 3.4.3, pytest-3.4.0, py-1.5.2, pluggy-0.6.0
+rootdir: /home/qianqianzhu/test_robot/mutation_python/group_21, inifile:
+collected 5 items
+
+../run_test.py .....                                                     [100%]
+
+========================== 5 passed in 55.65 seconds ===========================

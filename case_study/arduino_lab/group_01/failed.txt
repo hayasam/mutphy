@@ -1,0 +1,108 @@
+./executed/mut14/output.txt
+./executed/mut43/output.txt
+./executed/mut23/output.txt
+./executed/mut15/output.txt
+./executed/mut53/output.txt
+./executed/mut26/output.txt
+./executed/mut17/output.txt
+./executed/mut39/output.txt
+./executed/mut18/output.txt
+./executed/mut27/output.txt
+./executed/mut24/output.txt
+./executed/mut20/output.txt
+./executed/mut5/output.txt
+./executed/mut49/output.txt
+./executed/mut78/output.txt
+./executed/mut22/output.txt
+./executed/mut25/output.txt
+./executed/mut52/output.txt
+./executed/mut54/output.txt
+./executed/mut69/output.txt
+./executed/mut58/output.txt
+./executed/mut21/output.txt
+./executed/mut19/output.txt
+./executed/mut51/output.txt
+./executed/mut48/output.txt
+./executed/mut16/output.txt
+./executed/mut55/output.txt
+
+Mutation 0:pin_surround_replacement:digitalWrite(22, ( LOW)); in Line 27
+Mutation 1:pin_surround_replacement:digitalWrite(24, ( LOW)); in Line 27
+Mutation 2:pin_surround_replacement:digitalWrite(25, ( LOW)); in Line 27
+Mutation 3:pin_value_replacement:digitalWrite(23, !( LOW)); in Line 27
+Mutation 4:output_stmt_deletion: in Line 27
+Mutation 5:pin_surround_replacement:digitalWrite(22, ( HIGH)); in Line 29
+Mutation 6:pin_surround_replacement:digitalWrite(24, ( HIGH)); in Line 29
+Mutation 7:pin_surround_replacement:digitalWrite(25, ( HIGH)); in Line 29
+Mutation 8:pin_value_replacement:digitalWrite(23, !( HIGH)); in Line 29
+Mutation 9:output_stmt_deletion: in Line 29
+Mutation 10:pin_surround_replacement:digitalWrite(22, ( LOW)); in Line 31
+Mutation 11:pin_surround_replacement:digitalWrite(24, ( LOW)); in Line 31
+Mutation 12:pin_surround_replacement:digitalWrite(25, ( LOW)); in Line 31
+Mutation 13:pin_value_replacement:digitalWrite(23, !( LOW)); in Line 31
+Mutation 14:output_stmt_deletion: in Line 31
+Mutation 15:pin_surround_replacement:duration = pulseIn(23, ( HIGH)); in Line 32
+Mutation 16:pin_surround_replacement:duration = pulseIn(24, ( HIGH)); in Line 32
+Mutation 17:pin_surround_replacement:duration = pulseIn(25, ( HIGH)); in Line 32
+Mutation 18:pin_value_replacement:duration = pulseIn(22, !( HIGH)); in Line 32
+Mutation 19:pin_surround_replacement:analogWrite(1, ( right_speed)); in Line 54
+Mutation 20:pin_surround_replacement:analogWrite(3, ( right_speed)); in Line 54
+Mutation 21:pin_surround_replacement:analogWrite(5, ( left_speed)); in Line 55
+Mutation 22:pin_surround_replacement:analogWrite(7, ( left_speed)); in Line 55
+Mutation 23:pin_surround_replacement:analogWrite(1, ( 0)); in Line 58
+Mutation 24:pin_surround_replacement:analogWrite(3, ( 0)); in Line 58
+Mutation 25:pin_surround_replacement:analogWrite(5, ( 0)); in Line 59
+Mutation 26:pin_surround_replacement:analogWrite(7, ( 0)); in Line 59
+Mutation 27:pin_surround_replacement:pinMode(6, OUTPUT); in Line 72
+Mutation 28:pin_surround_replacement:pinMode(8, OUTPUT); in Line 72
+Mutation 29:pin_func_replacement:pinMode(7,INPUT); in Line 72
+Mutation 30:pin_surround_replacement:pinMode(22, OUTPUT); in Line 73
+Mutation 31:pin_surround_replacement:pinMode(23, OUTPUT); in Line 73
+Mutation 32:pin_surround_replacement:pinMode(25, OUTPUT); in Line 73
+Mutation 33:pin_surround_replacement:pinMode(26, OUTPUT); in Line 73
+Mutation 34:pin_surround_replacement:pinMode(27, OUTPUT); in Line 73
+Mutation 35:pin_func_replacement:pinMode(24,INPUT); in Line 73
+Mutation 36:pin_surround_replacement:pinMode(5, OUTPUT); in Line 74
+Mutation 37:pin_surround_replacement:pinMode(7, OUTPUT); in Line 74
+Mutation 38:pin_func_replacement:pinMode(6,INPUT); in Line 74
+Mutation 39:pin_surround_replacement:pinMode(2, OUTPUT); in Line 75
+Mutation 40:pin_surround_replacement:pinMode(4, OUTPUT); in Line 75
+Mutation 41:pin_func_replacement:pinMode(3,INPUT); in Line 75
+Mutation 42:pin_surround_replacement:pinMode(22, OUTPUT); in Line 76
+Mutation 43:pin_surround_replacement:pinMode(23, OUTPUT); in Line 76
+Mutation 44:pin_surround_replacement:pinMode(24, OUTPUT); in Line 76
+Mutation 45:pin_surround_replacement:pinMode(26, OUTPUT); in Line 76
+Mutation 46:pin_surround_replacement:pinMode(27, OUTPUT); in Line 76
+Mutation 47:pin_func_replacement:pinMode(25,INPUT); in Line 76
+Mutation 48:pin_surround_replacement:pinMode(1, OUTPUT); in Line 77
+Mutation 49:pin_surround_replacement:pinMode(3, OUTPUT); in Line 77
+Mutation 50:pin_func_replacement:pinMode(2,INPUT); in Line 77
+Mutation 51:pin_surround_replacement:pinMode(22, OUTPUT); in Line 78
+Mutation 52:pin_surround_replacement:pinMode(24, OUTPUT); in Line 78
+Mutation 53:pin_surround_replacement:pinMode(25, OUTPUT); in Line 78
+Mutation 54:pin_func_replacement:pinMode(23,INPUT); in Line 78
+Mutation 55:pin_surround_replacement:pinMode(23, INPUT); in Line 79
+Mutation 56:pin_surround_replacement:pinMode(24, INPUT); in Line 79
+Mutation 57:pin_surround_replacement:pinMode(25, INPUT); in Line 79
+Mutation 58:pin_func_replacement:pinMode(22,OUTPUT); in Line 79
+Mutation 59:pull_resis_replacement:pinMode(22,INPUT_PULLUP); in Line 79
+Mutation 60:pin_surround_replacement:pinMode(12, OUTPUT); in Line 80
+Mutation 61:pin_func_replacement:pinMode(13,INPUT); in Line 80
+Mutation 62:pin_surround_replacement:digitalWrite(22, ( HIGH)); in Line 82
+Mutation 63:pin_surround_replacement:digitalWrite(23, ( HIGH)); in Line 82
+Mutation 64:pin_surround_replacement:digitalWrite(25, ( HIGH)); in Line 82
+Mutation 65:pin_surround_replacement:digitalWrite(26, ( HIGH)); in Line 82
+Mutation 66:pin_surround_replacement:digitalWrite(27, ( HIGH)); in Line 82
+Mutation 67:pin_value_replacement:digitalWrite(24, !( HIGH)); in Line 82
+Mutation 68:output_stmt_deletion: in Line 82
+Mutation 69:pin_surround_replacement:digitalWrite(22, ( HIGH)); in Line 83
+Mutation 70:pin_surround_replacement:digitalWrite(23, ( HIGH)); in Line 83
+Mutation 71:pin_surround_replacement:digitalWrite(24, ( HIGH)); in Line 83
+Mutation 72:pin_surround_replacement:digitalWrite(26, ( HIGH)); in Line 83
+Mutation 73:pin_surround_replacement:digitalWrite(27, ( HIGH)); in Line 83
+Mutation 74:pin_value_replacement:digitalWrite(25, !( HIGH)); in Line 83
+Mutation 75:output_stmt_deletion: in Line 83
+Mutation 76:pin_surround_replacement:digitalWrite(5, ( LOW)); in Line 84
+Mutation 77:pin_surround_replacement:digitalWrite(7, ( LOW)); in Line 84
+Mutation 78:pin_value_replacement:digitalWrite(6, !( LOW)); in Line 84
+Mutation 79:output_stmt_deletion: in Line 84
