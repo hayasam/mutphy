@@ -1,0 +1,206 @@
+/**
+* Group Number : 3
+* Student 1:
+* Max Pigmans, 4483669
+* Student 2:
+* Matthijs Bijman, 4490304
+*/
+#include <ros.h>
+#include <std_msgs/Empty.h>
+#include <geometry_msgs/Twist.h>
+#include "Timer.h"
+
+//Setup bluetooth connection
+class NewHardware : 
+public ArduinoHardware {
+public: 
+  NewHardware():
+  ArduinoHardware(&Serial1, 57600){
+  };
+}; 
+ros::NodeHandle_<NewHardware> nh;
+
+Timer t;
+int stopAfter;
+int tooClose = 0;
+
+//Amount of time the bot keeps doing the last command before stopping, in ms
+int maxCommandTime = 500;
+//The latest linear.x value
+int lastLinear = 0;
+//The latest angular.z value
+int lastAngular = 0;
+
+//Sets all pins of the H-bridge to 0 (stopping the robot)
+void stop() {
+  digitalWrite(7, 0);   // 1rev
+  digitalWrite(24, 0);   // 1en
+  digitalWrite(6, 0);   // 1fwd
+  digitalWrite(3, 0);     // 2rev
+  digitalWrite(25, 0);   // 2en
+  digitalWrite(2, 0);   // 2fwd
+}
+
+//Boolean to indicate whether we should still be performing the last command, or if we should be standing still
+int tooLongSinceCommand = 0;
+void tooLongSinceCommandCallback() {
+  tooLongSinceCommand = 1;
+}
+
+void sensor() {
+  long duration, distance;
+  
+  //Trigger sensor (according to datasheet)
+  digitalWrite(23, LOW);
+  delayMicroseconds(2);
+  digitalWrite(23, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(23, LOW);
+  
+  //Get distance (according to datasheet)
+  duration = pulseIn(22, HIGH);
+  distance = duration/2/29.1;
+  
+  //If within 15 cm, we should stop
+  if( distance < 15)
+  {
+    tooClose = 1;
+    digitalWrite(13, 1); //enable led
+  } else {
+    digitalWrite(13, 0); //disable led
+    tooClose = 0;
+  }
+}
+
+/*
+* Parses a twist, resetting the time delay for stopping and storing the linear/angular values
+*/
+void parseTwist( const geometry_msgs::Twist& twist) {
+  t.stop(stopAfter);
+  stopAfter = t.after(maxCommandTime, &tooLongSinceCommandCallback);
+  tooLongSinceCommand = 0;
+  lastLinear = twist.linear.x;
+  lastAngular = twist.angular.z;
+}
+
+/*
+* Uses the latest linear/angular values to decide how to move the robot
+*/
+void move(int linear, int angular) {
+  boolean forward = (linear >= 0);
+  //pwm values
+  float speedfactors[] = {0, 30, 40, 50, 60, 70, 80, 90, 100, 120, 150, 180, 210, 255};
+
+  int speed = speedfactors[abs(linear)];
+  int angldff = speedfactors[abs(linear-abs(angular))];
+
+  //1 is right motor
+  int fwd1 = 6;
+  int fwd2 = 2;
+  int rev1 = 7;
+  int rev2 = 3;
+
+  //make sure motors are enabled
+  digitalWrite(24, 1);   // 1en
+  digitalWrite(25, 1);   // 2en
+
+  if (angular == 0) {
+	//Move forward
+    if (forward) {
+      digitalWrite(rev2, 0);
+      digitalWrite(rev1, 0);
+      analogWrite(fwd2, speed);
+      analogWrite(fwd1, speed);
+    } 
+	//Move backwards
+    else {
+      digitalWrite(fwd1, 0);
+      digitalWrite(fwd2, 0);
+      analogWrite(rev1, speed);
+      analogWrite(rev2, speed);
+    }
+  } 
+  else if (angular > 0) { //high angular = turn left
+    //Move forward, turning left
+    if (forward) {
+      digitalWrite(rev1, 0);
+      digitalWrite(rev2, 0);
+      analogWrite(fwd1, speed);
+      analogWrite(fwd2, angldff);
+    } 
+	//Move backwards, turning left
+    else {
+      analogWrite(rev2, angldff);
+      digitalWrite(fwd1, 0);
+      analogWrite(rev1, speed);
+      digitalWrite(fwd2, 0);
+    }
+  } 
+  else {
+	//Move forward, turning right
+    if (forward) {
+      analogWrite(fwd1, angldff);
+      digitalWrite(rev2, 0);
+      analogWrite(fwd2, speed);
+      digitalWrite(rev1, 0);
+    } 
+    else {
+      //Move backwards, turning right
+      analogWrite(rev2, speed);
+      digitalWrite(fwd1, 0);
+      analogWrite(rev1, angldff);
+      digitalWrite(fwd2, 0);
+    }
+  }
+}
+
+//Callback setup
+ros::Subscriber<geometry_msgs::Twist> sub("cmd_vel", &parseTwist);
+
+
+void setup()
+{ 
+  //Setup pins
+  pinMode(24, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(25, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(2, OUTPUT);
+  pinMode(13, OUTPUT);
+  pinMode(23, OUTPUT);
+  pinMode(22, INPUT);
+
+  //Setup ROS
+  nh.initNode();
+  nh.subscribe(sub);
+  nh.subscribe(sub2);
+  
+  //Check sensor every 100 ms
+  int every = t.every(100, &sensor);
+  
+  //First stop after maxCommandTime setup, gets refreshed whenever we get a twist
+  stopAfter = t.after(maxCommandTime, &tooLongSinceCommandCallback);
+}
+
+//Decides if we should be standing still (either too long since command or if sensor detects) or moving
+void doMovement() {
+  if (tooClose == 0 && tooLongSinceCommand == 0) {
+    move(lastLinear, lastAngular);
+  } else {
+    stop();
+  }
+}
+
+//Main loop
+void loop()
+{  
+  t.update();
+  doMovement();
+  nh.spinOnce();
+  delay(1);
+}
+
+
+
+

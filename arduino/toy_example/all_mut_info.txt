@@ -1,0 +1,37 @@
+Mutation 0:pin_surround_replacement:pinMode(2, INPUT_PULLUP); in Line 42
+Mutation 1:pin_surround_replacement:pinMode(4, INPUT_PULLUP); in Line 42
+Mutation 2:pin_func_replacement:pinMode(3,OUTPUT); in Line 42
+Mutation 3:pull_resis_replacement:pinMode(3,INPUT_PULLUP); in Line 42
+Mutation 4:pin_surround_replacement:pinMode(8, OUTPUT); in Line 43
+Mutation 5:pin_surround_replacement:pinMode(10, OUTPUT); in Line 43
+Mutation 6:pin_func_replacement:pinMode(9,INPUT); in Line 43
+Mutation 7:pin_surround_replacement:digitalWrite(8, ( LOW)); in Line 44
+Mutation 8:pin_surround_replacement:digitalWrite(10, ( LOW)); in Line 44
+Mutation 9:pin_value_replacement:digitalWrite(9, !( LOW)); in Line 44
+Mutation 10:output_stmt_deletion: in Line 44
+Mutation 11:pin_surround_replacement:digitalWrite(8, ( LOW)); in Line 49
+Mutation 12:pin_surround_replacement:digitalWrite(10, ( LOW)); in Line 49
+Mutation 13:pin_value_replacement:digitalWrite(9, !( LOW)); in Line 49
+Mutation 14:output_stmt_deletion: in Line 49
+Mutation 15:pin_surround_replacement:digitalWrite(8, ( HIGH)); in Line 54
+Mutation 16:pin_surround_replacement:digitalWrite(10, ( HIGH)); in Line 54
+Mutation 17:pin_value_replacement:digitalWrite(9, !( HIGH)); in Line 54
+Mutation 18:output_stmt_deletion: in Line 54
+Mutation 19:pin_surround_replacement:digitalWrite(8, ( LOW)); in Line 58
+Mutation 20:pin_surround_replacement:digitalWrite(10, ( LOW)); in Line 58
+Mutation 21:pin_value_replacement:digitalWrite(9, !( LOW)); in Line 58
+Mutation 22:output_stmt_deletion: in Line 58
+Mutation 23:pin_surround_replacement:int reading=(digitalRead(2)); in Line 74
+Mutation 24:pin_surround_replacement:int reading=(digitalRead(4)); in Line 74
+Mutation 25:pin_value_replacement:int reading=!(digitalRead(3)); in Line 74
+Mutation 26:pin_surround_replacement:digitalWrite(8, ( LOW)); in Line 109
+Mutation 27:pin_surround_replacement:digitalWrite(10, ( LOW)); in Line 109
+Mutation 28:pin_value_replacement:digitalWrite(9, !( LOW)); in Line 109
+Mutation 29:output_stmt_deletion: in Line 109
+Mutation 30:pin_surround_replacement:attachInterruptdigitalPinToInterrupt(2),ISR,RISING); in Line 114
+Mutation 31:pin_surround_replacement:attachInterruptdigitalPinToInterrupt(4),ISR,RISING); in Line 114
+Mutation 32:edge_value_replacement:attachInterruptdigitalPinToInterrupt(3),ISR,LOW); in Line 114
+Mutation 33:edge_value_replacement:attachInterruptdigitalPinToInterrupt(3),ISR,CHANGE); in Line 114
+Mutation 34:edge_value_replacement:attachInterruptdigitalPinToInterrupt(3),ISR,FALLING); in Line 114
+Mutation 35:pin_surround_replacement:detachInterrupt(2); in Line 118
+Mutation 36:pin_surround_replacement:detachInterrupt(4); in Line 118
