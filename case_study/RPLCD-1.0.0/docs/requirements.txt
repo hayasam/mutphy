@@ -1,4 +1,4 @@
-Sphinx==1.5
+Sphinx==3.3.0
 sphinx-rtd-theme==0.1.9
 RPi.GPIO==0.6.3
 mock==2.0.0
